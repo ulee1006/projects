@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .container-left{
+            display: inline-block;
+            margin-right: 100px;
+        }
+        .container-right{
+            display:inline-block;
+            vertical-align: top;
+        }
+        form  { display: table;      }
+        p     { display: table-row;  }
+        label { display: table-cell; }
+        input { display: table-cell; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <br>
+        <div class="container-left">
+            <h1>Registration</h1>
+            <form action="/processreg" method="post">
+            {%csrf_token%}
+            <input type="hidden" name=choice value="register">
+                <div>
+                    <label>Name</label>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <label>Username</label>
+                    <input type="text" name="username">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password">
+                </div>
+                <div>
+                    <label>Confirm PW</label>
+                    <input type="password" name="confirmpass">
+                </div>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <div class="container-right">
+                <h1>Login/Registration</h1>
+            <form action="/processlogin" method="post">
+            {%csrf_token%}
+                <input type="hidden" name=choice value="login">
+                <div>
+                    <label>Username</label>
+                    <input type="text" name="username">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password">
+                </div>
+                <br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
