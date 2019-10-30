@@ -1,1 +1,1 @@
-exam2
+Travel Planner application in Python/Flask
