@@ -1,1 +1,1 @@
-Travel Planner application in Python/Flask
+Travel Planner application in Python/Django
